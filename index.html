@@ -20,7 +20,18 @@
       <button class="btn" id="yesButton" onclick="nextPage()">Yes</button>
       <button class="btn" id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
       <script>
-        function nextPage() {
+
+        async function performAsyncTask() {
+          return new Promise(resolve => {
+            setTimeout(() => {
+              console.log("Async task completed!");
+              resolve();
+            }, 1000);
+          });
+        }
+
+        async function nextPage() {
+          await performAsyncTask();
           window.location.href = "yes.html";
         }
 
